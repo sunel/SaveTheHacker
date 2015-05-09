@@ -76,7 +76,7 @@
 						      <tr>
 						        <td><img src="{{ $match->image_url }}" width="200"></td>
 						        <td>{{ $match->photo_id }}</td>
-						        <td>{{ $match->similarity}}</td>
+						        <td>{{ 10 - $match->similarity}}</td>
 						        <td>{{ $match->data }}</td>
 						      </tr>
 						     @endforeach
