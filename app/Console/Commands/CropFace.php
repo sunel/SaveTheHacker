@@ -55,7 +55,7 @@ class CropFace extends Command {
 		    	$destinationPath = storage_path().'/uploads/temp/'.$id.'/crop';
 
 		        if (!File::isDirectory($destinationPath)) {
-		            File::makeDirectory($destinationPath, 0775, true);
+		            File::makeDirectory($destinationPath, 0777, true);
 		        }
 		    	foreach($faces as $key => $face){
 		    		list($xCoordinate,$yCoordinate,$width,$height) = $face;
