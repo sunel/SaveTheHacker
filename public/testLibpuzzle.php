@@ -1,7 +1,7 @@
 <?php
 
 $filename1 = "amy1.jpg";
-$filename2 = "amy2.jpg";
+$filename2 = "test1.jpg";
 
 $signature1 = puzzle_fill_cvec_from_file($filename1);
 $signature2 = puzzle_fill_cvec_from_file($filename2);
