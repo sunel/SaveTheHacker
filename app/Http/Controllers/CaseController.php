@@ -64,7 +64,7 @@ class CaseController extends Controller {
 				 	'id'  => array_get($data,'id',false),
 				 	'location'  => array_get($data,'location',false),
 				 	'user' => array_get($data,'user',false),
-				]
+				];
 			}
 		}
 		dd($finalData);
