@@ -26,7 +26,7 @@ Route::get('case/{id}', [
     'as' => 'search.post.id', 'uses' => 'CaseController@getCaseId'
 ]);
 
-Route::get('upload/{id}', [
+Route::post('upload/{id}', [
     'as' => 'upload.photo', 'uses' => 'CaseController@addPhoto'
 ]);
 
