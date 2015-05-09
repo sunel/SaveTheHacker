@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use mikehaertl\shellcommand\Command as ShellCmd;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -18,7 +19,7 @@ class DelectPhoto extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description.';
+	protected $description = 'Remove Temp Data.';
 
 	/**
 	 * Create a new command instance.
@@ -37,6 +38,11 @@ class DelectPhoto extends Command {
 	 */
 	public function fire()
 	{
+		$cmd = 'rm -rf '.storage_path().'/uploads/temp/'
+		$command = new ShellCmd($cmd);
+		if (!$command->execute()) {
+			Log::info($command->getError());
+		}
 		//rm -rf /usr/share/home/hack/storage/uploads/temp/
 	}
 
@@ -48,7 +54,7 @@ class DelectPhoto extends Command {
 	protected function getArguments()
 	{
 		return [
-			['example', InputArgument::REQUIRED, 'An example argument.'],
+			
 		];
 	}
 
@@ -60,7 +66,7 @@ class DelectPhoto extends Command {
 	protected function getOptions()
 	{
 		return [
-			['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
+			
 		];
 	}
 

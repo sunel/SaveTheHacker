@@ -95,7 +95,9 @@ class RunCommand extends Command {
 				}
 
 			}
+			
 		}
+		$this->call('face:delete', []);
 	}
 
 	protected function getInstagram()
