@@ -44,6 +44,16 @@ class CaseController extends Controller {
 	{
 		return view('search',compact('id'));
 	}
+
+	public function getFliker()
+	{
+		$client = new \Guzzle\Service\Client();
+
+		$response = $client->get('https://api.instagram.com/v1/users/self/feed?access_token=361859527.1fb234f.79fd4c8cf5c14856ae9ca6fd75f802d5');
+
+		dd($res->getBody());
+	}
+
 	public function addPhoto(Request $request,$id)
 	{
 		$file = array('image' => $request->file('photo'));
@@ -62,7 +72,7 @@ class CaseController extends Controller {
 	        $image = Image::make($input)->save($destinationPath.'/photo.jpg');
 
         	if ($image->filesize()) {
-        		
+
                 return redirect()->back();
             }
         }

@@ -30,6 +30,10 @@ Route::get('upload/{id}', [
     'as' => 'upload.post.id', 'uses' => 'CaseController@addPhoto'
 ]);
 
+Route::get('fliker', [
+    'as' => 'fliker.get', 'uses' => 'CaseController@getFliker'
+]);
+
 
 
 /*
