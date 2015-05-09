@@ -71,7 +71,7 @@ class RunCommand extends Command {
 								'data' => json_encode($details),
 								'photo_id' => $details['id'],
 								'similarity' => $d,
-							]
+							];
 						  	CaseMatch::create($data);	
 						}	
 						
