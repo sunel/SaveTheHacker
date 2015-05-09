@@ -38,7 +38,7 @@ class DelectPhoto extends Command {
 	 */
 	public function fire()
 	{
-		$cmd = 'rm -rf '.storage_path().'/uploads/temp/'
+		$cmd = 'rm -rf '.storage_path().'/uploads/temp/';
 		$command = new ShellCmd($cmd);
 		if (!$command->execute()) {
 			Log::info($command->getError());
