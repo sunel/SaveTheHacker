@@ -15,7 +15,7 @@
 							<hr>
 						</div>
 						<div class="panel-body">
-							@if(!empty($case->case_number))
+							@if(empty($case->case_number))
 								<div class="row">
 							        @if(Session::has('success'))
 							          <div class="alert-box success">
