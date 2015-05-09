@@ -74,7 +74,7 @@
 					    @if(count($matches))
 					    	@foreach($matches as $match)
 						      <tr>
-						        <td><img src="{{ $match->image_url }}"></td>
+						        <td><img src="{{ $match->image_url }}" width="200"></td>
 						        <td>{{ $match->photo_id }}</td>
 						        <td>{{ $match->similarity}}</td>
 						        <td>{{ $match->data }}</td>
