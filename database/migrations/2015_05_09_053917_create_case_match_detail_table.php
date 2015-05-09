@@ -19,6 +19,7 @@ class CreateCaseMatchDetailTable extends Migration {
 			$table->string('image_url');
 			$table->text('data');
 			$table->integer('similarity');
+			$table->string('photo_id');
 			
 		});
 	}

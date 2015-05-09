@@ -52,7 +52,7 @@ class CropFace extends Command {
 
 		    if(count($faces)){
 
-		    	$destinationPath = storage_path().'/uploads/'.$id.'/crop';
+		    	$destinationPath = storage_path().'/uploads/temp/'.$id.'/crop';
 
 		        if (!File::isDirectory($destinationPath)) {
 		            File::makeDirectory($destinationPath, 0775, true);

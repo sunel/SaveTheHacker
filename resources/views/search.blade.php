@@ -56,5 +56,32 @@
 			    </div>
 	    	</div>
 	    </div>
-	</section>    	
+	</section>
+	<section>
+		<div class="container">
+	    	<div class="row">
+				<div class="col-md-8 col-md-offset-4">
+					<table class="table table-striped">
+					    <thead>
+					      <tr>
+					        <th>Photo</th>
+					        <th>Uploaded By</th>
+					        <th>Location</th>
+					        <th>Uploaded On</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td><img src=""></td>
+					        <td>Ragunathan</td>
+					        <td>Mumbai</td>
+					        <td>15 Jan 2015</td>
+					      </tr>
+					    </tbody>
+				  </table> 
+				</div>
+			</div>
+		</div>		 
+	</section>
+	   	
 @endsection
