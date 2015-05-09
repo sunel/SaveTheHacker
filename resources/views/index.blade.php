@@ -33,10 +33,10 @@
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-6">
-									<a href="#" class="active" id="case-form-link">Case</a>
+									<a href="#" class="active" id="case-form-link"><h4>Case</h4></a>
 								</div>
 								<div class="col-xs-6">
-									<a href="#" id="search-form-link">Search</a>
+									<a href="#" id="search-form-link"><h4>Search</h4></a>
 								</div>
 							</div>
 							<hr>
@@ -44,7 +44,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									<form id="case-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+									<form id="case-form" action="{{ route('case.post') }}" method="post" role="form" style="display: block;">
 										<div class="form-group">
 											<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
 										</div>
@@ -59,7 +59,7 @@
 											</div>
 										</div>
 									</form>
-									<form id="search-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+									<form id="search-form" action="{{ route('search.post') }}" method="post" role="form" style="display: none;">
 										<div class="form-group">
 											<input type="text" name="id" id="caseid" tabindex="1" class="form-control" placeholder="Case ID" value="">
 										</div>

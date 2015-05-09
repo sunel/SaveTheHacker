@@ -13,6 +13,18 @@
 
 Route::get('/', 'WelcomeController@index');
 
+
+Route::post('case', [
+    'as' => 'case.post', 'uses' => 'CaseController@addCase'
+]);
+
+Route::get('case', [
+    'as' => 'search.post', 'uses' => 'CaseController@getCase'
+]);
+
+
+
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
