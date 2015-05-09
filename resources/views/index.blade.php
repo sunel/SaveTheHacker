@@ -45,6 +45,7 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<form id="case-form" action="{{ route('case.post') }}" method="post" role="form" style="display: block;">
+									    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 										<div class="form-group">
 											<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
 										</div>
@@ -59,14 +60,14 @@
 											</div>
 										</div>
 									</form>
-									<form id="search-form" action="{{ route('search.post') }}" method="post" role="form" style="display: none;">
+									<form id="search-form" action="{{ route('search.post') }}" method="get" role="form" style="display: none;">
 										<div class="form-group">
 											<input type="text" name="id" id="caseid" tabindex="1" class="form-control" placeholder="Case ID" value="">
 										</div>
 										<div class="form-group">
 											<div class="row">
 												<div class="col-sm-6 col-sm-offset-3">
-													<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Search">
+													<input type="submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Search">
 												</div>
 											</div>
 										</div>
