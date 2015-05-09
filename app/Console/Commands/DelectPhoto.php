@@ -37,7 +37,7 @@ class DelectPhoto extends Command {
 	 */
 	public function fire()
 	{
-		//
+		//rm -rf /usr/share/home/hack/storage/uploads/temp/
 	}
 
 	/**
