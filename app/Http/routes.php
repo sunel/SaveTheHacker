@@ -27,7 +27,7 @@ Route::get('case/{id}', [
 ]);
 
 Route::get('upload/{id}', [
-    'as' => 'upload.post.id', 'uses' => 'CaseController@addPhoto'
+    'as' => 'upload.search', 'uses' => 'CaseController@addPhoto'
 ]);
 
 Route::get('fliker', [
