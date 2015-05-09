@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use mikehaertl\shellcommand\Command as ShellCmd;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -18,7 +19,7 @@ class CropFace extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description.';
+	protected $description = 'Crop the Image.';
 
 	/**
 	 * Create a new command instance.
@@ -37,7 +38,16 @@ class CropFace extends Command {
 	 */
 	public function fire()
 	{
-		//
+		$file = $this->argument('file');
+		
+		$cmd = 'python /usr/share/home/FaceDetect/face_detect.py '.$file.' /usr/share/home/FaceDetect/haarcascade_frontalface_default.xml';
+		$command = new ShellCmd($cmd);
+		if ($command->execute()) {
+		    echo $command->getOutput();
+		} else {
+		    echo $command->getError();
+		    $exitCode = $command->getExitCode();
+		}
 	}
 
 	/**
@@ -48,7 +58,7 @@ class CropFace extends Command {
 	protected function getArguments()
 	{
 		return [
-			['example', InputArgument::REQUIRED, 'An example argument.'],
+			['file', InputArgument::REQUIRED, 'File to crop.'],
 		];
 	}
 
@@ -60,7 +70,7 @@ class CropFace extends Command {
 	protected function getOptions()
 	{
 		return [
-			['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
+			
 		];
 	}
 
