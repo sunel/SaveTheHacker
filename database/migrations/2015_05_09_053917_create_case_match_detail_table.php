@@ -15,7 +15,11 @@ class CreateCaseMatchDetailTable extends Migration {
 		Schema::create('case_match_details', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->timestamps();
+			$table->increments('case_detail_id');
+			$table->string('image_url');
+			$table->text('data');
+			$table->integer('similarity');
+			
 		});
 	}
 

@@ -15,7 +15,9 @@ class CreateCaseDetailTable extends Migration {
 		Schema::create('case_details', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->timestamps();
+			$table->string('name');
+			$table->string('email');
+			$table->string('case_number');
 		});
 	}
 
