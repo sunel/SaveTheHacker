@@ -3,6 +3,7 @@
 use App\CaseDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class CaseController extends Controller {
 
