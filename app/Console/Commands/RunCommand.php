@@ -66,7 +66,7 @@ class RunCommand extends Command {
 				    	$signature1 = puzzle_fill_cvec_from_file($case->photo_url);
 						$signature2 = puzzle_fill_cvec_from_file($file->getRealpath());
 						$d = puzzle_vector_normalized_distance($signature1, $signature2);
-						if ($d < PUZZLE_CVEC_SIMILARITY_LOW_THRESHOLD) {
+						if ($d < PUZZLE_CVEC_SIMILARITY_HIGH_THRESHOLD) {
 
 							$caseFound = \DB::table('case_match_details')
 								->where('case_detail_id', $case->id)
