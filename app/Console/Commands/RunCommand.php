@@ -65,29 +65,31 @@ class RunCommand extends Command {
 					$collection  = CaseDetail::all();
 					$collection->each(function($case) use($file,$details)
 				    {	
-				    	$signature1 = puzzle_fill_cvec_from_file($case->photo_url);
-						$signature2 = puzzle_fill_cvec_from_file($file->getRealpath());
-						$d = puzzle_vector_normalized_distance($signature1, $signature2);
-						if ($d < PUZZLE_CVEC_SIMILARITY_THRESHOLD) {
+				    	if($case->photo_url){
+					    	$signature1 = puzzle_fill_cvec_from_file($case->photo_url);
+							$signature2 = puzzle_fill_cvec_from_file($file->getRealpath());
+							$d = puzzle_vector_normalized_distance($signature1, $signature2);
+							if ($d < PUZZLE_CVEC_SIMILARITY_THRESHOLD) {
 
-							$caseFound = \DB::table('case_match_details')
-								->where('case_detail_id', $case->id)
-								->where('photo_id', $details['id'])
-								->get();
-							if(!count($caseFound)){
-								$data = [
-									'case_detail_id'=>$case->id,
-									'image_url' => $details['url'],
-									'data' => json_encode($details),
-									'photo_id' => $details['id'],
-									'similarity' => $d,
-								];
-							  	CaseMatch::create($data);
-							  	unset($data);	
+								$caseFound = \DB::table('case_match_details')
+									->where('case_detail_id', $case->id)
+									->where('photo_id', $details['id'])
+									->get();
+								if(!count($caseFound)){
+									$data = [
+										'case_detail_id'=>$case->id,
+										'image_url' => $details['url'],
+										'data' => json_encode($details),
+										'photo_id' => $details['id'],
+										'similarity' => $d,
+									];
+								  	CaseMatch::create($data);
+								  	unset($data);	
+								}
+								unset($caseFound);	
 							}
-							unset($caseFound);	
+							unset($signature1,$signature2,$d);
 						}
-						unset($signature1,$signature2,$d);
 				   
 				    });	
 				    unset($collection,$file);

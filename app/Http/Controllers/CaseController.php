@@ -3,6 +3,7 @@
 use File;
 use Image;
 use App\CaseDetail;
+use App\CaseMatch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -39,14 +40,26 @@ class CaseController extends Controller {
 
 		$case = $this->getCaseDetails($id);
 
-		return view('search',compact('id','case'));
+		$matches = $this->getMatchedCase($case);
+
+		return view('search',compact('id','case','matches'));
 	}
 
 	public function getCaseId($id)
 	{
 		$case = $this->getCaseDetails($id);
 
-		return view('search',compact('id','case'));
+		$matches = $this->getMatchedCase($case);
+
+		return view('search',compact('id','case','matches'));
+	}
+
+	protected function getMatchedCase($case)
+	{
+		if(!$case->id){
+			return [];
+		}
+		return CaseMatch::where('case_detail_id', $case->id)->get();
 	}
 
 	protected function getCaseDetails($id)

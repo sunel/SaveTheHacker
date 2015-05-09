@@ -47,7 +47,7 @@
 						    		<div class="profile-header-img">
 						                <img class="img-circle" src="/photo/{{$id}}" />
 						                <div class="rank-label-container">
-						                    <span class="label label-default rank-label">100 matches</span>
+						                    <span class="label label-default rank-label">{{ count($matches) }} matches</span>
 						                </div>
 						            </div>
 						        </div> 
@@ -60,23 +60,27 @@
 	<section>
 		<div class="container">
 	    	<div class="row">
-				<div class="col-md-8 col-md-offset-4">
+				<div class="col-md-12">
 					<table class="table table-striped">
 					    <thead>
 					      <tr>
 					        <th>Photo</th>
-					        <th>Uploaded By</th>
-					        <th>Location</th>
-					        <th>Uploaded On</th>
+					        <th>Uploaded Photo ID</th>
+					        <th>Similarity</th>
+					        <th>Uploaded Data</th>
 					      </tr>
 					    </thead>
 					    <tbody>
-					      <tr>
-					        <td><img src=""></td>
-					        <td>Ragunathan</td>
-					        <td>Mumbai</td>
-					        <td>15 Jan 2015</td>
-					      </tr>
+					    @if(count($matches))
+					    	@foreach($matches as $match)
+						      <tr>
+						        <td><img src="{{ $match->image_url }}"></td>
+						        <td>{{ $match->photo_id }}</td>
+						        <td>{{ $match->similarity}}</td>
+						        <td>{{ $match->data }}</td>
+						      </tr>
+						     @endforeach
+						 @endif     
 					    </tbody>
 				  </table> 
 				</div>
