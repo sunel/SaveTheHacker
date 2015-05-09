@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Case;
+use App\CaseDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,7 +24,7 @@ class CaseController extends Controller {
 		    return redirect()->back()->withErrors($validator->errors());
 		}
 
-		$case = Case::create($input);
+		$case = CaseDetail::create($input);
 
 		return $case;
 
