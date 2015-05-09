@@ -23,6 +23,7 @@
 							          </div>
 							        @endif
 							        <form action="{{ route('upload.photo',[$id]) }}" method="post" enctype="multipart/form-data">
+							        	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								        <div class="form-group">
 							          		<input type="file" name="image" class="form-control" id="image">
 								  			<p class="errors">{!!$errors->first('image')!!}</p>
