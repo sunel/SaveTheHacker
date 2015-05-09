@@ -1,5 +1,7 @@
 <?php namespace App\Console\Commands;
 
+use File;
+use Image;
 use Illuminate\Console\Command;
 use mikehaertl\shellcommand\Command as ShellCmd;
 use Symfony\Component\Console\Input\InputOption;
@@ -39,11 +41,29 @@ class CropFace extends Command {
 	public function fire()
 	{
 		$file = $this->argument('file');
-		
+		$id = $this->argument('id');
+
 		$cmd = 'python /usr/share/home/FaceDetect/face_detect.py '.$file.' /usr/share/home/FaceDetect/haarcascade_frontalface_default.xml';
 		$command = new ShellCmd($cmd);
 		if ($command->execute()) {
-		    echo $command->getOutput();
+
+		    $faces = json_decode($command->getOutput(),true);
+
+		    if(count($faces)){
+
+		    	$destinationPath = storage_path().'/uploads/'.$id.'/crop';
+
+		        if (!File::isDirectory($destinationPath)) {
+		            File::makeDirectory($destinationPath, 0775, true);
+		        }
+		    	foreach($faces as $key => $face){
+		    		list($xCoordinate,$yCoordinate,$width,$height) = $face;
+		    		$img = Image::make($file)->crop($width, $height, $xCoordinate, $yCoordinate);
+		    		$img->save($destinationPath.'/'.$id.'_'.$key.'.jpg');
+				}
+		    }
+
+
 		} else {
 		    echo $command->getError();
 		    $exitCode = $command->getExitCode();
@@ -59,6 +79,7 @@ class CropFace extends Command {
 	{
 		return [
 			['file', InputArgument::REQUIRED, 'File to crop.'],
+			['id', InputArgument::REQUIRED, 'Id of Case.'],
 		];
 	}
 
