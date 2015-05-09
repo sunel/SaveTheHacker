@@ -108,4 +108,27 @@ class CaseController extends Controller {
 
         return redirect()->back()->withErrors($validator->errors());
 	}
+
+	/**
+     * @return Illuminate\Http\Response
+     */
+    public function getImage($id)
+    {
+        $filename = storage_path().'/uploads/'.$id.'/profile/photo.jpg';
+
+        if (\File::isFile($filename)) {
+            $img = Image::make($filename);
+        } else {
+            $img = Image::canvas(600, 600, '#fffffff');
+        }
+
+        // create response and add encoded image data
+        $response = \Response::make($img->encode('jpg'));
+
+        // set content-type
+        $response->header('Content-Type', 'image/jpg');
+
+        // output
+        return $response;
+    }
 }
