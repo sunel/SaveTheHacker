@@ -51,7 +51,24 @@ class CaseController extends Controller {
 
 		$response = $client->get('https://api.instagram.com/v1/users/self/feed?access_token=361859527.1fb234f.79fd4c8cf5c14856ae9ca6fd75f802d5');
 
-		dd($response->getBody());
+		$json = $response->json();
+
+		$jsonArray = json_decode($json,true);
+
+		$finalData = [];
+		foreach ($jsonArray['data'] as $data ) {
+			if($url = array_get($data,'images.standard_resolution.url',false)){
+				$finalData[] = [
+				 	'url' => $url,
+				 	'org' => array_get($data,'link',false),
+				 	'id'  => array_get($data,'id',false),
+				 	'location'  => array_get($data,'location',false),
+				 	'user' => array_get($data,'user',false),
+				]
+			}
+		}
+		dd($finalData);
+
 	}
 
 	public function addPhoto(Request $request,$id)
