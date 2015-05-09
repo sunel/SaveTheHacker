@@ -52,7 +52,7 @@ class CaseController extends Controller {
 	protected function getCaseDetails($id)
 	{
 
-		return CaseDetail::where('case_number','=',$id);
+		 return CaseDetail::where('case_number','=',$id)->firstOrFail();
 		
 	}
 
