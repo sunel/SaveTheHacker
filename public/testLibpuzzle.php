@@ -34,6 +34,12 @@ var_dump($d);
 echo "</pre>";
 
 
+$d = puzzle_vector_normalized_distance($signature1, $signature5);
+
+echo "<pre> amy1 and aar";
+var_dump($d);
+echo "</pre>";
+
 if ($d < PUZZLE_CVEC_SIMILARITY_THRESHOLD) {
   echo "Pictures look similar\n";
 }
