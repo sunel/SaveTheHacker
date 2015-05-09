@@ -44,9 +44,11 @@ class RunCommand extends Command {
 	{
 		$instagram = $this->getInstagram();
 
-		$timestamp = time();
+		
 
 		foreach ($instagram as $details) {
+			
+			$timestamp = time();
 
 			$destinationPath = storage_path().'/uploads/temp/'.$timestamp;
 			if (!File::isDirectory($destinationPath)) {
