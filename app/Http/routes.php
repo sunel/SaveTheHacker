@@ -22,6 +22,10 @@ Route::get('case', [
     'as' => 'search.post', 'uses' => 'CaseController@getCase'
 ]);
 
+Route::get('case/{id}', [
+    'as' => 'search.post.id', 'uses' => 'CaseController@getCaseId'
+]);
+
 
 
 /*

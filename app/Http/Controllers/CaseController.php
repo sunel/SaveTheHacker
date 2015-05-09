@@ -27,12 +27,17 @@ class CaseController extends Controller {
 
 		$case = CaseDetail::create($input);
 
-		return $case;
+		return redirect()->route('search.post.id',[$input['case_number']]);
 
 	}
 
 	public function getCase()
 	{
 		dd(__METHOD__);
+	}
+
+	public function getCaseId($id)
+	{
+		dd($id);
 	}
 }
