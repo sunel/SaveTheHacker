@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('content')
-	<section id="intro" class="intro-section">
+	<section id="intro" class="intro-section photo">
         <div class="container">
 	    	<div class="row">
 				<div class="col-md-6 col-md-offset-3">
@@ -9,7 +9,7 @@
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-12">
-									<h4>Add User Photo</h4>
+									<h5>Add User Photo</h5>
 								</div>
 							</div>
 							<hr>
@@ -22,16 +22,20 @@
 						          </div>
 						        @endif
 						        <form action="{{ route('upload.photo',[$id]) }}" method="post" enctype="multipart/form-data">
-							         <div class="control-group">
-							          	<div class="controls">
-							          		<input type="file" name="image" id="image">
-								  			<p class="errors">{!!$errors->first('image')!!}</p>
-											@if(Session::has('error'))
-												<p class="errors">{!! Session::get('error') !!}</p>
-									 		@endif
-							        	</div>
+							        <div class="form-group">
+						          		<input type="file" name="image" id="image">
+							  			<p class="errors">{!!$errors->first('image')!!}</p>
+										@if(Session::has('error'))
+											<p class="errors">{!! Session::get('error') !!}</p>
+								 		@endif
 							        </div>
-				    				<input type="submit" value="Upload Image" name="submit">
+							        <div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+				    								<input type="submit" value="Upload Image" name="submit">
+				    							</div>
+				    						</div>
+				    				</div>				
 						      	</form>
 					       </div>
 					    </div> 
