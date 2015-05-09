@@ -59,7 +59,7 @@ class CaseController extends Controller {
 		if(!$case->id){
 			return [];
 		}
-		return CaseMatch::where('case_detail_id', $case->id)->get();
+		return CaseMatch::where('case_detail_id', $case->id)->orderBy('similarity','desc')->get();
 	}
 
 	protected function getCaseDetails($id)
