@@ -51,7 +51,7 @@ class CaseController extends Controller {
         $validator = Validator::make($file, $rules);
         if (!$validator->fails() && $request->file('photo')->isValid()) {
             
-            $image = $this->userRepository->saveProfileImage($request->file('photo'));
+            $input = $request->file('photo');
 
             $destinationPath = storage_path().'/uploads/'.$id.'/profile';
 
@@ -61,13 +61,12 @@ class CaseController extends Controller {
 
 	        $image = Image::make($input)->save($destinationPath.'/photo.jpg');
 
-	        return $image;
+        	if ($image->filesize()) {
+        		
+                return redirect()->back();
+            }
+        }
 
-	            if ($image->filesize()) {
-	                return $this->response->success('Image has been saved.', 201);
-	            }
-	        }
-
-        return $this->response->error('The uploaded file is invalid', 400);
+        return redirect()->back()->withErrors($validator->errors());
 	}
 }
