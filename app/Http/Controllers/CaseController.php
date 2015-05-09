@@ -37,12 +37,23 @@ class CaseController extends Controller {
 	{
 		$id = $request->input('id');
 
-		return view('search',compact('id'));
+		$case = $this->getCaseDetails($id);
+
+		return view('search',compact('id','case'));
 	}
 
 	public function getCaseId($id)
 	{
-		return view('search',compact('id'));
+		$case = $this->getCaseDetails($id);
+
+		return view('search',compact('id','case'));
+	}
+
+	protected function getCaseDetails($id)
+	{
+
+		return CaseDetail::where('case_number','=',$id);
+		
 	}
 
 	public function getFliker()
