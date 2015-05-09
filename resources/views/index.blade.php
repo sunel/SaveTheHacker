@@ -23,14 +23,40 @@
 
 	<section id="intro" class="intro-section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Scrolling Nav</h1>
-                    <p><strong>Usage Instructions:</strong> Make sure to include the <code>scrolling-nav.js</code>, <code>jquery.easing.min.js</code>, and <code>scrolling-nav.css</code> files. To make a link smooth scroll to another section on the page, give the link the <code>.page-scroll</code> class and set the link target to a corresponding ID on the page.</p>
-                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
-                </div>
-            </div>
-        </div>
+	    	<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-login">
+						<div class="panel-heading">
+							<div class="row">
+								<h1>Title</h1>
+							</div>
+							<hr>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-12">
+									<form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+										<div class="form-group">
+											<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
+										</div>
+										<div class="form-group">
+											<input type="email" name="email" id="email" tabindex="2" class="form-control" placeholder="Email">
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Create">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </section>
 	
 	<!-- Scripts -->
