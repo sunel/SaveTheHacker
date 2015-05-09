@@ -76,7 +76,8 @@ class CaseController extends Controller {
 				];
 			}
 		}
-		dd($finalData);
+		
+		return $finalData;
 
 	}
 
@@ -98,7 +99,9 @@ class CaseController extends Controller {
 	        $image = Image::make($input)->save($destinationPath.'/photo.jpg');
 
         	if ($image->filesize()) {
-
+        		$case = $this->getCaseDetails($id);
+        		$case->photo_url = $destinationPath.'/photo.jpg';
+        		$case->save();
                 return redirect()->back();
             }
         }

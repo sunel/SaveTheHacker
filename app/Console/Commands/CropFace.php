@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use File;
+use Log;
 use Image;
 use Illuminate\Console\Command;
 use mikehaertl\shellcommand\Command as ShellCmd;
@@ -65,8 +66,8 @@ class CropFace extends Command {
 
 
 		} else {
-		    echo $command->getError();
-		    $exitCode = $command->getExitCode();
+		    Log::info($command->getError());
+		    #$exitCode = $command->getExitCode();
 		}
 	}
 
