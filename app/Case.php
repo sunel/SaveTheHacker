@@ -6,7 +6,7 @@ class Case extends Model {
 
 	protected $table = 'case_details';
 	
-    	public $timestamps = false;
+    public $timestamps = false;
 
 	protected $fillable = ['name', 'email', 'case_number'];
 

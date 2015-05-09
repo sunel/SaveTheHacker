@@ -6,8 +6,8 @@ class CaseMatch extends Model {
 
 	protected $table = 'case_match_details';
         
-        public $timestamps = false;
+    public $timestamps = false;
 
-        protected $fillable = ['case_detail_id', 'image_url', 'data','similarity'];
+    protected $fillable = ['case_detail_id', 'image_url', 'data','similarity'];
 
 }
