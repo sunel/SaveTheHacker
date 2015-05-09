@@ -8,6 +8,6 @@ class CaseMatch extends Model {
         
     public $timestamps = false;
 
-    protected $fillable = ['case_detail_id', 'image_url', 'data','similarity'];
+    protected $fillable = ['case_detail_id', 'image_url', 'data','similarity','photo_id'];
 
 }
