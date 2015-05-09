@@ -18,6 +18,7 @@ class CreateCaseDetailTable extends Migration {
 			$table->string('name');
 			$table->string('email');
 			$table->string('case_number');
+			$table->text('photo_url');
 		});
 	}
 
