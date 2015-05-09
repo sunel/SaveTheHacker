@@ -61,7 +61,7 @@ class RunCommand extends Command {
 				foreach (Finder::create()->files()->name('*.jpg')->in($destinationPath) as $file) {
 					
 					$collection  = CaseDetail::all();
-					$collection->each(function($case)
+					$collection->each(function($case) use($file,$details)
 				    {	
 				    	$signature1 = puzzle_fill_cvec_from_file($case->photo_url);
 						$signature2 = puzzle_fill_cvec_from_file($file->getRealpath());
