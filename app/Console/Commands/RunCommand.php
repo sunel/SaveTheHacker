@@ -64,15 +64,15 @@ class RunCommand extends Command {
 					$collection->each(function($case) use($file,$details)
 				    {	
 				    	$signature1 = puzzle_fill_cvec_from_file($case->photo_url);
-						$signature2 = puzzle_fill_cvec_from_file($file->getRealpath());
+						$signature1 = puzzle_fill_cvec_from_file($file->getRealpath());
 						$d = puzzle_vector_normalized_distance($signature1, $signature2);
 						if ($d < PUZZLE_CVEC_SIMILARITY_LOW_THRESHOLD) {
 
-							$user = \DB::table('case_match_details')
+							$caseFound = \DB::table('case_match_details')
 								->where('case_detail_id', $case->id)
 								->where('photo_id', $details['id'])
 								->get();
-							if(!$user->count()){
+							if(!count($caseFound)){
 								$data = [
 									'case_detail_id'=>$case->id,
 									'image_url' => $details['url'],
@@ -80,12 +80,15 @@ class RunCommand extends Command {
 									'photo_id' => $details['id'],
 									'similarity' => $d,
 								];
-							  	CaseMatch::create($data);	
-							}	
-							
+							  	CaseMatch::create($data);
+							  	unset($data);	
+							}
+							unset($caseFound);	
 						}
+						unset($signature1,$signature2,$d);
 				   
 				    });	
+				    unset($collection,$file);
 					
 				}
 
