@@ -101,7 +101,7 @@
 						        <td><img src="{{ $match->image_url }}" width="150"></td>
 						        <td>{{ $match->photo_id }}</td>
 						        <td>{{ 10 - $match->similarity}}</td>
-						        <td><script>syntaxHighlight('{!! $match->data !!}')</script></td>
+						        <td><script>document.write('<pre>'+syntaxHighlight('{!! $match->data !!}')+'</pre>')</script></td>
 						      </tr>
 						     @endforeach
 						 @endif     
