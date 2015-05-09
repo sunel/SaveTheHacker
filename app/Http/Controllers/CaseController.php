@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use File;
+use Image;
 use App\CaseDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,13 +33,41 @@ class CaseController extends Controller {
 
 	}
 
-	public function getCase()
+	public function getCase(Request $request)
 	{
-		dd(__METHOD__);
+		$id = $request->input('id');
+
+		return view('search',compact('id'));
 	}
 
 	public function getCaseId($id)
 	{
-		dd($id);
+		return view('search',compact('id'));
+	}
+	public function addPhoto(Request $request,$id)
+	{
+		$file = array('image' => $request->file('photo'));
+        $rules = array('image' => 'required');
+        $validator = Validator::make($file, $rules);
+        if (!$validator->fails() && $request->file('photo')->isValid()) {
+            
+            $image = $this->userRepository->saveProfileImage($request->file('photo'));
+
+            $destinationPath = storage_path().'/uploads/'.$id.'/profile';
+
+	        if (!File::isDirectory($destinationPath)) {
+	            File::makeDirectory($destinationPath, 0775, true);
+	        }
+
+	        $image = Image::make($input)->save($destinationPath.'/photo.jpg');
+
+	        return $image;
+
+	            if ($image->filesize()) {
+	                return $this->response->success('Image has been saved.', 201);
+	            }
+	        }
+
+        return $this->response->error('The uploaded file is invalid', 400);
 	}
 }
