@@ -66,8 +66,8 @@ class RunCommand extends Command {
 					$collection->each(function($case) use($file,$details)
 				    {	
 				    	if($case->photo_url){
-				    		puzzle_set_lambdas(13);
-				    		puzzle_set_p_ratio(1.5);
+				    		#puzzle_set_lambdas(13);
+				    		#puzzle_set_p_ratio(1.5);
 					    	$signature1 = puzzle_fill_cvec_from_file($case->photo_url);
 							$signature2 = puzzle_fill_cvec_from_file($file->getRealpath());
 							$d = puzzle_vector_normalized_distance($signature1, $signature2);
