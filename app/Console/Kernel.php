@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel {
 		'App\Console\Commands\CropFace',
 		'App\Console\Commands\DelectPhoto',
 		'App\Console\Commands\RunCommand',
+		'App\Console\Commands\ComparePhoto',	
 	];
 
 	/**

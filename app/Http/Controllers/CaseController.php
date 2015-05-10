@@ -2,6 +2,7 @@
 
 use File;
 use Image;
+use Artisan;
 use App\CaseDetail;
 use App\CaseMatch;
 use Illuminate\Http\Request;
@@ -67,6 +68,13 @@ class CaseController extends Controller {
 
 		 return CaseDetail::where('case_number','=',$id)->firstOrFail();
 		
+	}
+
+	public function runFinder(Request $request){
+		
+		Artisan::queue('face:compare');
+
+		return $request->input('hub.challenge');
 	}
 
 	public function getFliker()

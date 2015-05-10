@@ -38,6 +38,10 @@ Route::get('fliker', [
     'as' => 'fliker.get', 'uses' => 'CaseController@getFliker'
 ]);
 
+Route::get('check', [
+    'as' => 'insat.check', 'uses' => 'CaseController@runFinder'
+]);
+
 
 
 /*
