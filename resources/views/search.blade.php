@@ -32,8 +32,11 @@
 					<div class="panel panel-login">
 						<div class="panel-heading">
 							<div class="row">
-								<div class="col-xs-12">
-									<h5>User Photo</h5>
+								<div class="col-xs-6">
+									<a href="/" id='case-form-link' class="active"><h5>Home</h5></a>
+								</div>
+								<div class="col-xs-6">
+									<a href="#" id="search-form-link"><h4>Upload</h4></a>
 								</div>
 							</div>
 							<hr>
@@ -67,14 +70,31 @@
 						    </div> 
 						  @else 
 						  	<div class="row">
-						  		<div class="profile-header-container">   
+						  		<div id="case-form" class="profile-header-container">   
 						    		<div class="profile-header-img">
 						                <img class="img-circle" src="/photo/{{$id}}" />
 						                <div class="rank-label-container">
 						                    <span class="label label-default rank-label">{{ count($matches) }} matches</span>
 						                </div>
 						            </div>
-						        </div> 
+						        </div>
+						        <form id="search-form" style="display: none;" action="{{ route('upload.photo',[$id]) }}" method="post" enctype="multipart/form-data">
+						        	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							        <div class="form-group">
+						          		<input type="file" name="photo" class="form-control" id="image">
+							  			<p class="errors">{!!$errors->first('photo')!!}</p>
+										@if(Session::has('error'))
+											<p class="errors">{!! Session::get('error') !!}</p>
+								 		@endif
+							        </div>
+							        <div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Upload">
+												</div>
+											</div>
+									</div>			
+						      	</form>
 						  	</div>
 						  @endif  
 			    </div>
@@ -111,5 +131,18 @@
 			</div>
 		</div>		 
 	</section>
-	 	
+	<script>
+
+    	$(function() {
+			$('#search-form-link').click(function(e) {
+				$("#search-form").delay(100).fadeIn(100);
+		 		$("#case-form").fadeOut(100);
+				$('#case-form-link').removeClass('active');
+				$(this).addClass('active');
+				e.preventDefault();
+			});
+
+		});
+
+    </script> 	
 @endsection
