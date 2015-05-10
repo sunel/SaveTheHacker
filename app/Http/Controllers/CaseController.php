@@ -74,7 +74,7 @@ class CaseController extends Controller {
 		
 		Artisan::queue('face:compare');
 
-		return $request->input('hub.challenge');
+		return $request->input('hub_challenge');
 	}
 
 	public function getFliker()
