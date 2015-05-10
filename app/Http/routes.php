@@ -42,6 +42,10 @@ Route::get('check', [
     'as' => 'insat.check', 'uses' => 'CaseController@runFinder'
 ]);
 
+Route::get('cases', [
+    'as' => 'case.all', 'uses' => 'CaseController@getAllCase'
+]);
+
 
 
 /*

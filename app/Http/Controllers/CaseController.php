@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class CaseController extends Controller {
 
+	public function getAllCase(){
+
+		return CaseDetail::all();
+		
+	}
 	public function addCase(Request $request)
 	{
 		$input = $request->only('name', 'email');
